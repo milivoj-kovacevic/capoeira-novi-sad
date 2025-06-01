@@ -1,5 +1,5 @@
 ---
-const { title, lang, showDarkToggle = true } = Astro.props;
+const { title, lang, showDarkToggle = true, pageId = "home" } = Astro.props;
 
 const navLinks = [
   { id: "home", sr: "Početna", en: "Home", href: lang === 'sr' ? '/sr' : '/en' },
@@ -8,6 +8,18 @@ const navLinks = [
   { id: "gallery", sr: "Galerija", en: "Gallery", href: lang === 'sr' ? '/sr/gallery' : '/en/gallery' },
   { id: "contact", sr: "Kontakt", en: "Contact", href: lang === 'sr' ? '/sr/contact' : '/en/contact' },
 ];
+
+// Map pageId to path in each language
+const pagePaths = {
+  home: { sr: "/sr", en: "/en" },
+  about: { sr: "/sr/about", en: "/en/about" },
+  schedule: { sr: "/sr/schedule", en: "/en/schedule" },
+  gallery: { sr: "/sr/gallery", en: "/en/gallery" },
+  contact: { sr: "/sr/contact", en: "/en/contact" },
+};
+
+const otherLang = lang === 'sr' ? 'en' : 'sr';
+const otherLangPath = pagePaths[pageId]?.[otherLang] ?? (otherLang === 'sr' ? '/sr' : '/en');
 ---
 <!DOCTYPE html>
 <html lang={lang} class="dark">
@@ -31,9 +43,9 @@ const navLinks = [
         </div>
         <div class="ml-auto flex items-center gap-4 text-sm">
           <div>
-            <a href="/sr" class={lang === 'sr' ? "font-bold underline text-cas-yellow" : "text-gray-300 hover:underline"}>Srpski</a>
+            <a href={lang === 'sr' ? undefined : otherLangPath} class={lang === 'sr' ? "font-bold underline text-cas-yellow" : "text-gray-300 hover:underline"}>Srpski</a>
             <span class="mx-1 text-cas-yellow">|</span>
-            <a href="/en" class={lang === 'en' ? "font-bold underline text-cas-yellow" : "text-gray-300 hover:underline"}>English</a>
+            <a href={lang === 'en' ? undefined : otherLangPath} class={lang === 'en' ? "font-bold underline text-cas-yellow" : "text-gray-300 hover:underline"}>English</a>
           </div>
           {showDarkToggle && (
             <button id="dark-toggle" type="button" class="ml-4 px-2 py-1 rounded border border-cas-yellow text-cas-yellow bg-transparent hover:bg-cas-yellow hover:text-cas-blue transition">
