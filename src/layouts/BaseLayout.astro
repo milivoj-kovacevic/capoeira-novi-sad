@@ -26,14 +26,13 @@ const otherLangPath = `${pagePaths[pageId]?.[otherLang] ?? (otherLang === 'sr' ?
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href={`/styles/global.css`} />
-    <link rel="icon" type="image/png" href={`/logo.png`} />
+    <link rel="icon" type="image/png" href={`/images/logo.png`} />
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v23.0&appId=1967792780123651"></script>
   </head>
   <body class="bg-cas-blue text-white dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors">
     <header class="bg-cas-blue dark:bg-gray-950 shadow flex items-center px-6 py-3 sticky top-0 z-10 border-b-4 border-cas-yellow">
-      <img src={`/logo.png`} alt="Capoeira Akademija Logo" class="h-12 w-12 rounded-full border-2 border-cas-yellow bg-white mr-4" />
+      <img src={`/images/logo.png`} alt="Capoeira Akademija Logo" class="h-12 w-12 rounded-full border-2 border-cas-yellow bg-white mr-4" />
       <nav class="flex-1 flex items-center">
         <div class="flex gap-6 ml-4">
           {navLinks.map(link => (
