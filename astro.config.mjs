@@ -9,9 +9,9 @@ export default defineConfig({
     tailwind(),
     i18next({
       defaultLocale: 'sr', // <-- Force Serbian as default
-      base: isProd ? '/capoeira-novi-sad/' : '/',
+      // base: isProd ? '/capoeira-novi-sad/' : '/',
       // ...other options
     }),
   ],
-  base: isProd ? '/capoeira-novi-sad/' : '/',
+  // base: isProd ? '/capoeira-novi-sad/' : '/',
 });
